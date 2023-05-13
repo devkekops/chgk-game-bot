@@ -442,7 +442,6 @@ def cacheInitialize():
 	for t in lastRows:
 		cache[str(t[0])] = t[1]
 
-
 #def error(bot, update, error):
 #    logger.warn('Update "%s" caused error "%s"' % (update, error))
 #    if update.message.from_user.id in config.admins:
@@ -457,7 +456,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(b'Hello, world!')
 
 def myServer():
-	httpd = HTTPServer(('localhost', 8080), SimpleHTTPRequestHandler)
+	httpd = HTTPServer(('0.0.0.0', 80), SimpleHTTPRequestHandler)
 	httpd.serve_forever()
 
 def main():
