@@ -8,6 +8,9 @@ from random import randint
 import collections
 import re
 
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import threading
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -447,8 +450,19 @@ def cacheInitialize():
 #    else:
 #    	return USERWAIT
 
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Hello, world!')
+
+def myServer():
+	httpd = HTTPServer(('localhost', 8080), SimpleHTTPRequestHandler)
+	httpd.serve_forever()
 
 def main():
+	threading.Thread(target=myServer).start()
+
 	updater = Updater(token=config.token)
 	dispatcher = updater.dispatcher
 
