@@ -1,8 +1,10 @@
-token = ''
+import os
+
+token = os.environ['TOKEN']
 channelName = "@chgkgame"
-creator = 
-admins =[, , ]
-checkLater = 2
+creator = 287002169
+admins =[287002169]
+checkLater = 1
 cacheSize = 100
 adminInstructions = "Введите команду:\n/publishnow - опубликовать сейчас\n/publishlater - добавить в очередь на публикацию\n/reserve - узнать сколько в очереди на публикацию"
 userInstructions = "Введите команду:\n/send - отправить вопрос для публикации в канале\n/feedback - отправить вопрос, жалобу, предложение"
